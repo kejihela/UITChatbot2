@@ -44,6 +44,7 @@ from langchain_core.output_parsers import StrOutputParser
 import pyttsx3
 import os
 #os.environ['OPENAI_API_KEY'] = 
+
 # Load and process data
 def load_data(path):
  loader1 = DirectoryLoader(path, glob='*.txt', show_progress=True)
