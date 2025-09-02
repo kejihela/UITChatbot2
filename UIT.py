@@ -43,7 +43,7 @@ from langchain_core.output_parsers import StrOutputParser
 
 import pyttsx3
 import os
-os.environ['OPENAI_API_KEY'] = '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'
+#os.environ['OPENAI_API_KEY'] = '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'
 
 # Load and process data
 def load_data(path):
