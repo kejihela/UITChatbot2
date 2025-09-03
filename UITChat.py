@@ -43,7 +43,7 @@ from langchain_core.output_parsers import StrOutputParser
 
 import pyttsx3
 import os
-#os.environ['OPENAI_API_KEY'] = key
+os.environ['OPENAI_API_KEY'] = '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'
 
 # Load and process data
 def load_data(path):
@@ -68,7 +68,7 @@ def embed(data, device, model):
  )
  return embeddings
 
-path = 'data'
+path = 'scraped_data'
 docs = load_data(path)
 data = get_chunks(docs)
 
@@ -86,7 +86,7 @@ llm = ChatOpenAI(model = "gpt-4o")
 # Define the chat prompt
 prompt = ChatPromptTemplate.from_messages(
     [
-        ("system","You are called UITChat, which is short for Worldbank Ideas Chatbot, the chatbot for the Worldbank Ideas Project. You are friendly and follow instructions to answer questions extremely well. Please be truthful and give direct answers. If you don't know the answer, just say that you don't know, don't try to make up an answer. Keep the response short and concise in at most five sentences. If the user chats in a different language, translate accurately and respond in the same language. You will provide specific details and accurate answers to user queries on the Worldbank Ideas Project."),
+        ("system","You are called UITChat, which is short for Uniccon Group of Company Chatbot, the chatbot for the summer school bootcamp Project. You are friendly and follow instructions to answer questions extremely well. Please be truthful and give direct answers. If you don't know the answer, just say that you don't know, don't try to make up an answer. Keep the response short and concise in at most five sentences. If the user chats in a different language, translate accurately and respond in the same language. You will provide specific details and accurate answers to user queries on the Worldbank Ideas Project."),
          MessagesPlaceholder("chat_history"),
         ("human", "Use only the retrieved {context} to answer the user question {input}.")
     ]
@@ -141,10 +141,10 @@ class StartupScreen(Screen):
     def on_enter(self):
         layout = BoxLayout(orientation='vertical', spacing=10, pos_hint={'center_x': 0.5, 'center_y': 0.5}, size_hint=(None, None), size=("300dp", "400dp"))
         # Image at the center
-        image = Image(source="uit.jpeg", size_hint=(None, None), size=("500dp", "300dp"), pos_hint={'center_x': 0.5})
+        image = Image(source="UITchat2.jpeg", size_hint=(None, None), size=("500dp", "300dp"), pos_hint={'center_x': 0.5})
         self.spinner = MDSpinner(size_hint=(None, None), size=(50, 50), pos_hint={'center_x': 0.5, 'center_y': 1}, active=True)
-        title = MDLabel(text="UITChat", font_style="H4", halign="center", bold=True)
-        version = MDLabel(text="Version 1.0", font_style="Caption", halign="center")
+        title = MDLabel(text="UIT SUMMER BOOTCAMP CHATBOT", font_style="H4", halign="center", bold=True)
+        version = MDLabel(text="", font_style="Caption", halign="center")
 
         layout.add_widget(image)
         layout.add_widget(self.spinner)
@@ -239,11 +239,6 @@ class SignupScreen(Screen):
         self.manager.current = "main"
 
 
-
-
-
-
-
 # Main Chatbot Screen
 class ChatScreen(Screen):
     def __init__(self, **kwargs):
@@ -271,7 +266,7 @@ class ChatScreen(Screen):
         # Welcome Card
         md_card = MDCard(size_hint=(None, None), size=("700dp", "70dp"),
                          pos_hint={"center_x": 0.5, "center_y": 0.8}, elevation=5)
-        md_label = MDLabel(text="Welcome!!! Ask me anything about the WorldBank IDEAS project!",
+        md_label = MDLabel(text="Welcome!!! Ask me anything about SUMMER BOOTCAMP TRAINEES and PEDIATRIC DISEASES!",
                            halign="center", theme_text_color="Secondary", bold=True)
         md_card.add_widget(md_label)
         layout.add_widget(md_card)
@@ -503,8 +498,8 @@ class ChatScreen(Screen):
         MDApp.get_running_app().theme_cls.theme_style = "Dark" if MDApp.get_running_app().theme_cls.theme_style == "Light" else "Light"
 
 
-# UITChat App
-class UIT(MDApp):
+# WiChat App
+class UITChat(MDApp):
     def build(self):
         sm = MDScreenManager()
         sm.add_widget(StartupScreen(name="startup"))
@@ -515,4 +510,4 @@ class UIT(MDApp):
 
 
 if __name__ == "__main__":
-    UIT().run()
+    UITChat().run()
